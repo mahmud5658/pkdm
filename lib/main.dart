@@ -13,6 +13,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   WebViewController controller = WebViewController();
   @override
   void initState() {
@@ -37,15 +38,15 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         // ignore: deprecated_member_use
         body: WillPopScope(
-           onWillPop: () async {
+          onWillPop: () async {
+            
             if (await controller.canGoBack()) {
               controller.canGoBack();
-              return false;
-            } else {
               return true;
+            } else {
+              return false;
             }
           },
-      
           child: SafeArea(
             child: WebViewWidget(controller: controller),
           ),
